@@ -1,23 +1,26 @@
 import org.junit.Assert;
 import org.junit.Test;
+import praktikum.Database;
 import praktikum.Ingredient;
 import static praktikum.IngredientType.SAUCE;
 
 public class IngredientTest {
 
-    Ingredient ingredient = new Ingredient(SAUCE, "Название ингредиента", 170.9F);
+    Database database = new Database();
+
+    Ingredient ingredient = new Ingredient(database.availableIngredients().get(0).getType(), database.availableIngredients().get(0).getName(), database.availableIngredients().get(0).getPrice());
 
     @Test
     public void getPrice(){
 
-        Assert.assertEquals(170.9F, ingredient.getPrice(), 0);
+        Assert.assertEquals(100F, ingredient.getPrice(), 0);
 
     }
 
     @Test
     public void getName(){
 
-        Assert.assertEquals("Название ингредиента", ingredient.getName());
+        Assert.assertEquals("hot sauce", ingredient.getName());
 
     }
 
